@@ -1,0 +1,472 @@
+/* responsive.css — Mobile-first override layer for the Flame landing.
+ *
+ * Built at 1440px with inline styles. Rather than refactor each component,
+ * we use attribute selectors against inline styles to apply `!important`
+ * overrides progressively across breakpoints. Goal: clean layout at every
+ * width from 320px to 1440px+.
+ *
+ * Breakpoints:
+ *   ≤1440px  Release min-width so design fits any desktop
+ *   ≤1200px  Compact desktop / large tablet — tighten paddings
+ *   ≤1100px  Nav compresses
+ *   ≤900px   Tablet — multi-col grids start collapsing
+ *   ≤640px   Phone — single column, nav stacks
+ *   ≤420px   Tight phone — final tier
+ */
+
+/* ═══════════════════ BASE — under-1440 desktop ═══════════════════ */
+@media (max-width: 1439px) {
+  /* The page wrapper no longer forces 1440px wide. This single override
+     prevents horizontal scroll across all sub-1440 viewports. */
+  [style*="min-width: 1440px"],
+  [style*="minWidth: 1440"] {
+    min-width: 0 !important;
+  }
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  /* All section content gets a sane max width so it doesn't sprawl when
+     the page is wider than the design but the inner content tries to
+     fill 1440. */
+  body { width: 100%; }
+}
+
+/* ═══════════════════ COMPACT DESKTOP (≤ 1200px) ══════════════════ */
+@media (max-width: 1200px) {
+  /* Big section paddings get trimmed */
+  [style*="padding: 100px 32px"] { padding: 72px 28px !important; }
+  [style*="padding: 120px 32px"] { padding: 80px 28px !important; }
+  [style*="padding: 80px 56px"] { padding: 60px 32px !important; }
+  [style*="padding: 72px 56px"] { padding: 56px 32px !important; }
+
+  /* 4-col grids feel cramped on narrower desktops */
+  [style*="repeat(4, 1fr)"] { grid-template-columns: repeat(3, 1fr) !important; }
+
+  /* Some sidebar grids tighten */
+  [style*="grid-template-columns: 1fr 480px"],
+  [style*="grid-template-columns: 480px 1fr"] {
+    grid-template-columns: 1fr 380px !important;
+    gap: 32px !important;
+  }
+}
+
+/* ═══════════════════ TABLET MID (≤ 1100px) ═══════════════════════
+ * Reduce nav gaps before we collapse into a stacked layout.
+ */
+@media (max-width: 1100px) {
+  .flame-nav-row {
+    padding: 18px 22px !important;
+    gap: 18px !important;
+  }
+  .flame-nav-links {
+    gap: 18px !important;
+    font-size: 10px !important;
+  }
+  .flame-wordmark > div:last-child {
+    font-size: 24px !important;
+  }
+}
+
+/* ═══════════════════ HAMBURGER BREAKPOINT (≤ 960px) ══════════════
+ * Below this width the desktop nav links start to crowd the wordmark
+ * and the cart button. Switch to hamburger menu.
+ */
+@media (max-width: 960px) {
+  .flame-nav-links { display: none !important; }
+  .flame-nav-mobile {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  /* Meta bar: hide the middle status pulse + tighten */
+  .flame-meta-bar {
+    padding: 8px 18px !important;
+    font-size: 9px !important;
+    gap: 10px !important;
+  }
+  .flame-meta-mid { display: none !important; }
+}
+
+@media (max-width: 520px) {
+  /* Tight phone — also hide the right (phone+IG) text so meta bar is just brand+location */
+  .flame-meta-right { display: none !important; }
+  .flame-meta-bar { justify-content: center !important; }
+  .flame-nav-row { padding: 14px 16px !important; }
+  .flame-wordmark > div:last-child { font-size: 22px !important; }
+}
+
+/* ═══════════════════ TABLET (≤ 900px) ════════════════════════════ */
+@media (max-width: 900px) {
+  /* 4-col → 2-col, 3-col → 1-col, 2-col → 1-col */
+  [style*="repeat(4, 1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
+  [style*="repeat(8, 1fr)"] { grid-template-columns: repeat(4, 1fr) !important; }
+  [style*="repeat(6, 1fr)"] { grid-template-columns: repeat(3, 1fr) !important; }
+  [style*="repeat(5, 1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
+  [style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
+  [style*="gridTemplateColumns: \"1fr 1fr\""],
+  [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+
+  /* Asymmetric splits (sidebar + content) collapse to single column */
+  [style*="grid-template-columns: 320px 1fr"],
+  [style*="grid-template-columns: 280px 1fr"],
+  [style*="grid-template-columns: 340px 1fr"],
+  [style*="grid-template-columns: 480px"],
+  [style*="grid-template-columns: 460px"],
+  [style*="grid-template-columns: 380px"],
+  [style*="grid-template-columns: 360px"],
+  [style*="grid-template-columns: 1fr 1.1fr"],
+  [style*="grid-template-columns: 1.4fr 1fr"],
+  [style*="grid-template-columns: 1.1fr 1fr"],
+  [style*="grid-template-columns: 2fr 1fr 1fr 1fr"],
+  [style*="grid-template-columns: 1fr 480px"],
+  [style*="grid-template-columns: 480px 1fr"],
+  [style*="grid-template-columns: 1fr 380px"],
+  [style*="grid-template-columns: 380px 1fr"],
+  [style*="grid-template-columns: 1fr 1.2fr"],
+  [style*="grid-template-columns: 1fr auto 1fr"],
+  [style*="grid-template-columns: 1fr auto"] {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Section padding scales down */
+  [style*="padding: 100px 32px"] { padding: 56px 22px !important; }
+  [style*="padding: 80px 32px"] { padding: 48px 22px !important; }
+  [style*="padding: 72px 32px"] { padding: 44px 22px !important; }
+  [style*="padding: 60px 32px"] { padding: 40px 22px !important; }
+  [style*="padding: 80px 56px"] { padding: 48px 22px !important; }
+
+  /* Reduce big display fonts a notch (clamp before phone hit) */
+  [style*="font-size: 168px"] { font-size: 96px !important; line-height: 0.9 !important; }
+  [style*="font-size: 144px"] { font-size: 88px !important; line-height: 0.9 !important; }
+  [style*="font-size: 132px"] { font-size: 80px !important; line-height: 0.9 !important; }
+  [style*="font-size: 128px"] { font-size: 76px !important; line-height: 0.9 !important; }
+  [style*="font-size: 120px"] { font-size: 72px !important; line-height: 0.9 !important; }
+  [style*="font-size: 96px"]  { font-size: 60px !important; line-height: 0.95 !important; }
+  [style*="font-size: 88px"]  { font-size: 56px !important; line-height: 0.95 !important; }
+}
+
+/* ═══════════════════ PHONE (≤ 640px) ═════════════════════════════ */
+@media (max-width: 640px) {
+  /* Even 2-col on phone goes single */
+  [style*="repeat(4, 1fr)"],
+  [style*="repeat(8, 1fr)"],
+  [style*="repeat(6, 1fr)"],
+  [style*="repeat(5, 1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Section padding — knock down */
+  [style*="padding: \"80px 32px"],
+  [style*="padding: 80px 32px"],
+  [style*="padding: 100px 32px"],
+  [style*="padding: 120px 32px"] { padding: 48px 18px !important; }
+  [style*="padding: 60px 32px"],
+  [style*="padding: 72px 32px"] { padding: 36px 18px !important; }
+  [style*="padding: 80px 56px"],
+  [style*="padding: 72px 56px"] { padding: 48px 20px !important; }
+
+  /* Hero giants → manageable */
+  [style*="font-size: 168px"] { font-size: 56px !important; line-height: 0.9 !important; }
+  [style*="font-size: 144px"] { font-size: 52px !important; line-height: 0.9 !important; }
+  [style*="font-size: 132px"] { font-size: 50px !important; line-height: 0.9 !important; }
+  [style*="font-size: 128px"] { font-size: 48px !important; line-height: 0.9 !important; }
+  [style*="font-size: 120px"] { font-size: 46px !important; line-height: 0.9 !important; }
+  [style*="font-size: 96px"]  { font-size: 44px !important; line-height: 0.95 !important; }
+  [style*="font-size: 88px"]  { font-size: 40px !important; line-height: 0.95 !important; }
+  [style*="font-size: 80px"]  { font-size: 38px !important; line-height: 0.95 !important; }
+  [style*="font-size: 72px"]  { font-size: 34px !important; line-height: 1 !important; }
+  [style*="font-size: 64px"]  { font-size: 30px !important; line-height: 1 !important; }
+
+  /* Smaller display sizes */
+  [style*="font-size: 56px"] { font-size: 26px !important; }
+  [style*="font-size: 48px"] { font-size: 24px !important; }
+  [style*="font-size: 44px"] { font-size: 22px !important; }
+  [style*="font-size: 40px"] { font-size: 22px !important; }
+  [style*="font-size: 38px"] { font-size: 22px !important; }
+  [style*="font-size: 36px"] { font-size: 20px !important; }
+  [style*="font-size: 32px"] { font-size: 20px !important; }
+  [style*="font-size: 30px"] { font-size: 19px !important; }
+  [style*="font-size: 28px"] { font-size: 18px !important; }
+  [style*="font-size: 26px"] { font-size: 17px !important; }
+  [style*="font-size: 24px"] { font-size: 17px !important; }
+
+  /* Sticky position releases — sticky sidebars become inline on phone */
+  [style*="position: sticky"][style*="top: 100"] { position: static !important; }
+
+  /* NAV row stays single-line — hamburger handles links now */
+  /* (No more stacking; the hamburger menu replaces the cluster of links) */
+
+  /* Meta bar tighter */
+  [style*="padding: 8px 32px"][style*="background"] {
+    padding: 8px 14px !important;
+    gap: 8px !important;
+    font-size: 9px !important;
+  }
+
+  /* Tweaks panel — push out of the way */
+  .twk-panel {
+    transform: scale(0.85) !important;
+    transform-origin: bottom right !important;
+  }
+
+  /* Cookie banner — full-width footer on phone */
+  [style*="position: fixed"][style*="bottom: 24"][style*="right: 24"] {
+    bottom: 12px !important;
+    right: 12px !important;
+    left: 12px !important;
+    width: auto !important;
+    max-width: none !important;
+    padding: 18px !important;
+  }
+  [style*="width: 380px"] { width: 100% !important; max-width: none !important; }
+
+  /* Map height tighter */
+  [style*="height: 240px"] { height: 180px !important; }
+
+  /* Member card hero — let it shrink */
+  [style*="width: 460px"] { width: 100% !important; max-width: 360px !important; }
+
+  /* Big section labels readable */
+  [style*="letter-spacing: 0.3em"] { letter-spacing: 0.18em !important; }
+  [style*="letter-spacing: 0.06em"][style*="font-family: var(--display)"] {
+    letter-spacing: 0.04em !important;
+  }
+
+  /* Sticky filter bar on Catalog — let it wrap */
+  [style*="position: sticky"][style*="top: 75"] {
+    position: static !important;
+  }
+
+  /* Filter group label + chips wrap better */
+  [style*="white-space: nowrap"][style*="letter-spacing: 0.22em"] {
+    white-space: normal !important;
+  }
+
+  /* Buttons and CTAs shrink */
+  a[style*="padding: 18px 32px"],
+  a[style*="padding: 18px 28px"],
+  button[style*="padding: 22px 36px"] {
+    padding: 14px 20px !important;
+    font-size: 16px !important;
+  }
+
+  /* Hero CTA row stacks */
+  [style*="display: flex"][style*="gap: 12px"][style*="marginTop: 36"],
+  [style*="display: flex"][style*="gap: 12"][style*="margin-top: 36"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  [style*="display: flex"][style*="gap: 12px"][style*="marginTop: 36"] > a,
+  [style*="display: flex"][style*="gap: 12"][style*="margin-top: 36"] > a {
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Images and SVGs constrained */
+  img, svg { max-width: 100% !important; height: auto; }
+  body { font-size: 15px !important; }
+}
+
+/* ═══════════════════ TIGHT PHONE (≤ 420px) ═══════════════════════ */
+@media (max-width: 420px) {
+  [style*="repeat(4, 1fr)"],
+  [style*="repeat(8, 1fr)"],
+  [style*="repeat(6, 1fr)"],
+  [style*="repeat(5, 1fr)"] { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+  [style*="padding: 48px 18px"] { padding: 32px 14px !important; }
+
+  /* Knock down final tier of font sizes */
+  [style*="font-size: 168px"] { font-size: 44px !important; }
+  [style*="font-size: 144px"] { font-size: 42px !important; }
+  [style*="font-size: 132px"] { font-size: 40px !important; }
+  [style*="font-size: 128px"] { font-size: 38px !important; }
+  [style*="font-size: 120px"] { font-size: 36px !important; }
+  [style*="font-size: 96px"]  { font-size: 34px !important; }
+  [style*="font-size: 88px"]  { font-size: 30px !important; }
+  [style*="font-size: 80px"]  { font-size: 28px !important; }
+}
+
+/* ═══════════════════ V2 REFINEMENTS ════════════════════════════════
+ * Targeted fixes for the catalog filter toolbar, hero featured-product
+ * showcase, drop section header, and cart drawer. Anything that uses
+ * a class hook (.cat-toolbar, .cat-search, .cat-grid, .cat-cta) is
+ * defined here so the rules survive even when inline styles shift.
+ */
+
+/* Catalog toolbar — base styling (works at all sizes) */
+.cat-toolbar select { appearance: none; -webkit-appearance: none; padding-right: 32px !important; background-position: right 10px center; }
+.cat-search:focus-within { border-color: currentColor !important; }
+
+/* ─── Catalog toolbar mobile (≤ 768px) ─────────────────────────── */
+@media (max-width: 768px) {
+  .cat-toolbar > div:first-child {
+    padding: 12px 18px !important;
+    gap: 8px !important;
+  }
+  /* Search input takes its own row */
+  .cat-search {
+    order: 3 !important;
+    width: 100% !important;
+    flex-basis: 100% !important;
+  }
+  /* FILTROS button + sort sit on top row */
+  .cat-toolbar select {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .cat-toolbar > div:first-child {
+    padding: 10px 14px !important;
+  }
+  /* Active filters strip — tighter */
+  .cat-toolbar > div:nth-child(2) {
+    padding: 8px 14px 12px !important;
+  }
+  /* Expandable filter panel padding */
+  .cat-toolbar > div:nth-child(3),
+  .cat-toolbar > div:last-child {
+    padding: 14px 14px 18px !important;
+  }
+}
+
+/* ─── Catalog grid: 4 → 3 → 2 → 1 with class hook ────────────── */
+@media (max-width: 1200px) { .cat-grid { grid-template-columns: repeat(3, 1fr) !important; } }
+@media (max-width: 900px)  { .cat-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; } }
+@media (max-width: 520px)  { .cat-grid { grid-template-columns: 1fr !important; } }
+
+/* Catalog CTA strip (1fr auto) collapses */
+@media (max-width: 900px) {
+  .cat-cta { grid-template-columns: 1fr !important; gap: 24px !important; }
+}
+
+/* ─── Hero featured product showcase ───────────────────────────── */
+@media (max-width: 900px) {
+  /* The hero is grid: 1fr 480px. On tablet+ shrink the right column,
+     on phone we go single-col (already handled by base rules above). */
+  /* Featured drop card — kill rotation so it fits */
+  [style*="transform: rotate(2deg)"] { transform: rotate(0deg) !important; }
+  [style*="transform: rotate(-6deg)"] { transform: rotate(0deg) !important; }
+}
+
+@media (max-width: 640px) {
+  /* Featured drop floating cards — pull them in so they don't bleed off-screen */
+  [style*="top: -32"][style*="left: -32"] {
+    position: relative !important;
+    top: 0 !important; left: 0 !important;
+    width: 100% !important;
+    margin-bottom: 16px !important;
+    transform: none !important;
+  }
+  [style*="bottom: -28"][style*="right: -16"] {
+    position: relative !important;
+    bottom: 0 !important; right: 0 !important;
+    margin-top: 16px !important;
+    width: 100% !important;
+    transform: none !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Hero stats grid: 4 cols → 2 cols */
+  [style*="grid-template-columns: repeat(4, auto)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px !important;
+  }
+}
+
+/* ─── Drop section header ─────────────────────────────────────── */
+@media (max-width: 640px) {
+  /* "ESTA SEMANA / DESTACADOS" row was flex w/ space-between — stack */
+  [style*="display: flex"][style*="justify-content: space-between"][style*="margin-bottom: 48"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+    margin-bottom: 28px !important;
+  }
+}
+
+/* ─── Drop grid (4 col, same as catalog) ───────────────────────── */
+@media (max-width: 900px) {
+  /* Drop highlights grid */
+  [style*="repeat(4, 1fr)"][style*="gap: 16"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+}
+@media (max-width: 520px) {
+  [style*="repeat(4, 1fr)"][style*="gap: 16"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ─── Product card content density on small screens ─────────── */
+@media (max-width: 520px) {
+  /* The vape illustration container */
+  [style*="height: 260"] { height: 200px !important; }
+}
+
+/* ─── Cart drawer ──────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Drawer width: min(440px, 100vw) → on phone it's already 100vw, good. */
+  [role="dialog"][aria-label="Carrito"] {
+    width: 100vw !important;
+  }
+  /* Drawer header tighter */
+  [role="dialog"][aria-label="Carrito"] > div:first-child {
+    padding: 14px 16px !important;
+  }
+  /* Cart line items tighter */
+  [role="dialog"][aria-label="Carrito"] [style*="grid-template-columns: 56px 1fr auto"] {
+    padding: 14px 16px !important;
+    gap: 10px !important;
+  }
+  /* Cart footer tighter */
+  [role="dialog"][aria-label="Carrito"] > div:last-child {
+    padding: 16px !important;
+  }
+}
+
+/* ─── Sticky offset on mobile — Catalog toolbar sits under Nav ───
+ * Nav becomes static-ish on phone (already col layout), so toolbar
+ * sticky top=75 doesn't apply nicely. Release it.
+ */
+@media (max-width: 640px) {
+  .cat-toolbar { position: relative !important; top: 0 !important; }
+}
+
+/* ─── Featured drop card padding mobile ──────────────────────── */
+@media (max-width: 640px) {
+  /* The big featured card has padding: 32 */
+  [style*="border: 1px solid"][style*="padding: 32"][style*="box-shadow"] {
+    padding: 20px !important;
+  }
+}
+
+/* ─── Headline glow on phone (perf + readability) ────────────── */
+@media (max-width: 640px) {
+  h1[style*="text-shadow"], h1 [style*="text-shadow"] {
+    text-shadow: none !important;
+  }
+}
+
+/* ─── Section labels and pills wrap nicely ───────────────────── */
+@media (max-width: 640px) {
+  [style*="flex-wrap: wrap"] > * { min-width: 0; }
+}
+
+/* ─── Pay section (1fr 1fr) collapse on tablet ──────────────── */
+@media (max-width: 900px) {
+  /* Both halves of Pay+Shipping become a single column with no right-border */
+  [style*="border-right: 1px solid"][style*="padding: 72px 56px"] {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  }
+}
+
+/* ─── Tweaks panel doesn't block content on phone ────────────── */
+@media (max-width: 640px) {
+  .twk-panel-toggle, .twk-panel { z-index: 50 !important; }
+}

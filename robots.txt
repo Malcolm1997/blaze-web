@@ -1,0 +1,19 @@
+# robots.txt — Blaze
+# Permite a los crawlers indexar el sitio entero.
+
+User-agent: *
+Allow: /
+Disallow: /uploads/
+Disallow: /screenshots/
+Disallow: /directions/
+Disallow: /flame/
+
+# Index de archivos JSX y CSS no debería indexarse
+Disallow: /*.jsx$
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://blaze.club/sitemap.xml
+
+# Crawler delay (segundos) — bajo, sitio chico
+Crawl-delay: 1

@@ -1,0 +1,27 @@
+{
+  "name": "Blaze — Vapeo premium en Rosario",
+  "short_name": "Blaze",
+  "description": "Vapeo premium en Rosario. Curaduría chica y entrega en 48hs. Solo +18.",
+  "start_url": "/Flame%20Landing.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#FF1E5A",
+  "lang": "es-AR",
+  "categories": ["lifestyle", "shopping"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "favicon-mask.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

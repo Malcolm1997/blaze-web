@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- SEO -->
+  <title>Cookies y privacidad — Blaze</title>
+  <meta name="description" content="Política de cookies en lenguaje normal y control granular de preferencias: esenciales, funcionales, analíticas y marketing." />
+  <meta name="keywords" content="cookies, privacidad, política, gdpr" />
+  <meta name="author" content="Blaze" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="rating" content="adult" />
+  <meta name="theme-color" content="#FF1E5A" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://blaze.club/Cookies.html" />
+  <link rel="alternate" hreflang="es-AR" href="https://blaze.club/Cookies.html" />
+
+  <!-- Icons & manifest -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="mask-icon" href="favicon-mask.svg" color="#FF1E5A" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Blaze" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:title" content="Cookies y privacidad — Blaze" />
+  <meta property="og:description" content="Política de cookies en lenguaje normal y control granular de preferencias: esenciales, funcionales, analíticas y marketing." />
+  <meta property="og:url" content="https://blaze.club/Cookies.html" />
+  <meta property="og:image" content="https://blaze.club/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Blaze — Vapeo premium Rosario" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cookies y privacidad — Blaze" />
+  <meta name="twitter:description" content="Política de cookies en lenguaje normal y control granular de preferencias: esenciales, funcionales, analíticas y marketing." />
+  <meta name="twitter:image" content="https://blaze.club/og-image.png" />
+  <!-- /SEO -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  
+  <link rel="stylesheet" href="responsive.css"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&family=Archivo+Black&family=Oswald:wght@400;600&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #000000; }
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      color: #EAEAEA;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    :root {
+      --display: 'Bebas Neue', sans-serif;
+      --body: 'Space Grotesk', sans-serif;
+      --mono: 'Space Mono', monospace;
+    }
+    #root { min-height: 100vh; }
+    @keyframes flamePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.5; transform: scale(0.9); }
+    }
+    @keyframes flameBlink {
+      0%, 50%  { opacity: 1; }
+      51%, 100%{ opacity: 0; }
+    }
+  </style>
+</head>
+<body data-screen-label="Cookies">
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="flame/tokens.jsx"></script>
+  <script type="text/babel" src="flame/Cart.jsx"></script>
+  <script type="text/babel" src="flame/Nav.jsx"></script>
+  <script type="text/babel" src="flame/Community.jsx"></script>
+
+  <script type="text/babel" src="flame/CookiesPage.jsx"></script>
+  <script type="text/babel" src="flame/PageShell.jsx"></script>
+  <script type="text/babel">
+    ReactDOM.createRoot(document.getElementById("root")).render(
+      <PageShell><CookiesPage /></PageShell>
+    );
+  </script>
+</body>
+</html>
