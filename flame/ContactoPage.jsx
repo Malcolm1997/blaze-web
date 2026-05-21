@@ -1,39 +1,7 @@
-// CONTACTO — canales directos + form + mapa.
-
-// Form helpers — duplicated from UnirtePage.jsx so this page works standalone.
-// (Babel-standalone scripts don't share lexical scope.)
-const inputStyle = (T) => ({
-  background: T.panel,
-  border: `1px solid ${T.rule2}`,
-  color: T.fg,
-  padding: "16px 18px",
-  fontFamily: "var(--mono)", fontSize: 13,
-  letterSpacing: "0.04em",
-  outline: "none",
-  width: "100%",
-  boxSizing: "border-box",
-});
-
-const Field = ({ label, accent, children }) => {
-  const T = FlameTokens;
-  return (
-    <div style={{ marginBottom: 14 }}>
-      <div style={{
-        fontFamily: "var(--mono)", fontSize: 10, color: T.muted,
-        letterSpacing: "0.22em", marginBottom: 8,
-      }}>{label}</div>
-      {children}
-    </div>
-  );
-};
+// CONTACTO — canales directos + mapa.
 
 const ContactoPage = ({ accent, accent2 }) => {
   const T = FlameTokens;
-  const [form, setForm] = React.useState({
-    nombre: "", email: "", tipo: "consulta", mensaje: "",
-  });
-  const [sent, setSent] = React.useState(false);
-  const update = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }));
 
   return (
     <React.Fragment>
@@ -173,85 +141,6 @@ const ContactoPage = ({ accent, accent2 }) => {
             Operamos sólo dentro de Rosario y alrededores cercanos.
             Si estás afuera, escribinos igual — a veces hacemos excepciones.
           </p>
-        </div>
-      </section>
-
-      {/* FORM */}
-      <section style={{
-        padding: "80px 32px", borderBottom: `1px solid ${T.rule}`,
-        background: T.panel,
-      }}>
-        <div style={{
-          maxWidth: 880, margin: "0 auto",
-        }}>
-          <SectionLabel idx="04">MENSAJE LARGO</SectionLabel>
-          <h3 style={{
-            fontFamily: "var(--display)", fontSize: 64,
-            margin: "12px 0 16px", letterSpacing: "0.02em",
-            color: T.fg, textAlign: "center",
-          }}>
-            ¿NECESITÁS ESCRIBIR <span style={{ color: accent }}>MÁS DE 2 LÍNEAS</span>?
-          </h3>
-          <p style={{
-            fontSize: 14, color: T.muted, lineHeight: 1.7, marginTop: 8,
-            textAlign: "center", marginBottom: 40,
-          }}>
-            Para devoluciones, propuestas comerciales o consultas que no entran en un WhatsApp.
-          </p>
-
-          {sent ? (
-            <div style={{
-              padding: 40, border: `1px solid ${accent}`, background: T.bg,
-              textAlign: "center",
-            }}>
-              <div style={{
-                fontFamily: "var(--mono)", fontSize: 12, color: accent,
-                letterSpacing: "0.3em", marginBottom: 12,
-              }}>● MENSAJE ENVIADO</div>
-              <div style={{
-                fontFamily: "var(--display)", fontSize: 40, color: T.fg,
-                letterSpacing: "0.02em",
-              }}>GRACIAS — TE RESPONDEMOS EN 24HS.</div>
-            </div>
-          ) : (
-            <div style={{
-              padding: 32, background: T.bg, border: `1px solid ${T.rule2}`,
-            }}>
-              <div style={{
-                display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14,
-              }}>
-                <Field label="NOMBRE" accent={accent}>
-                  <input value={form.nombre} onChange={update("nombre")}
-                         placeholder="ej: María R." style={inputStyle(T)} />
-                </Field>
-                <Field label="WHATSAPP" accent={accent}>
-                  <input type="tel" value={form.email} onChange={update("email")}
-                         placeholder="ej: 341 555-0000" style={inputStyle(T)} />
-                </Field>
-              </div>
-              <Field label="TIPO DE CONSULTA" accent={accent}>
-                <select value={form.tipo} onChange={update("tipo")} style={inputStyle(T)}>
-                  <option value="consulta">Consulta general</option>
-                  <option value="devolucion">Devolución / problema</option>
-                  <option value="comercial">Propuesta comercial</option>
-                  <option value="prensa">Prensa / medios</option>
-                  <option value="otro">Otro</option>
-                </select>
-              </Field>
-              <Field label="MENSAJE" accent={accent}>
-                <textarea value={form.mensaje} onChange={update("mensaje")}
-                          placeholder="Contanos qué necesitás..." rows={6}
-                          style={{ ...inputStyle(T), resize: "vertical", minHeight: 140 }} />
-              </Field>
-              <button onClick={() => setSent(true)} style={{
-                background: accent, color: T.bg, border: "none",
-                padding: "18px 32px", marginTop: 8,
-                fontFamily: "var(--display)", fontSize: 22, letterSpacing: "0.14em",
-                cursor: "pointer", width: "100%",
-                boxShadow: `0 16px 40px ${accent}40`,
-              }}>ENVIAR MENSAJE →</button>
-            </div>
-          )}
         </div>
       </section>
 

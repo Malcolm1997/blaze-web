@@ -24,7 +24,7 @@ const FlameNav = ({ accent, accent2 }) => {
   }, [menuOpen]);
 
   const navLinks = [
-    { label: "Inicio",       href: "Flame Landing.html" },
+    { label: "Inicio",       href: "index.html" },
     { label: "Catálogo",     href: "Catalogo.html" },
     { label: "Cómo comprar", href: "ComoComprar.html" },
     { label: "Contacto",     href: "Contacto.html" },
@@ -75,7 +75,7 @@ const FlameNav = ({ accent, accent2 }) => {
         position: "sticky", top: 0, zIndex: 5,
       }}>
         {/* Wordmark */}
-        <a href="Flame Landing.html" className="flame-wordmark" style={{
+        <a href="index.html" className="flame-wordmark" style={{
           display: "flex", alignItems: "center", gap: 14,
           textDecoration: "none", color: "inherit",
           flexShrink: 0,

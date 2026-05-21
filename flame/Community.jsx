@@ -144,7 +144,7 @@ const FlameFooter = ({ accent, accent2 }) => {
             </p>
           </div>
           {[
-            ["NAVEGAR",  [["Inicio", "Flame Landing.html"], ["Catálogo", "Catalogo.html"], ["Cómo comprar", "ComoComprar.html"], ["Contacto", "Contacto.html"]]],
+            ["NAVEGAR",  [["Inicio", "index.html"], ["Catálogo", "Catalogo.html"], ["Cómo comprar", "ComoComprar.html"], ["Contacto", "Contacto.html"]]],
             ["CONTACTO", [["WhatsApp", "https://wa.me/5493412299708"], ["Instagram", "https://www.instagram.com/blaze.me.one?igsh=ajc5c2plaGxsbWpr"], ["Soporte", "Contacto.html"]]],
             ["LEGAL",    [["Sólo +18", "Cookies.html"], ["Política de privacidad", "Cookies.html"], ["Términos", "Cookies.html"], ["Cookies", "Cookies.html"]]],
           ].map(([t, items]) => (

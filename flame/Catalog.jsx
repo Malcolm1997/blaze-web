@@ -341,7 +341,7 @@ const FlameCatalogPage = ({ accent, accent2 }) => {
               textDecoration: "none", textAlign: "center",
               boxShadow: `0 12px 32px ${accent}50`,
             }}>WHATSAPP →</a>
-            <a href="Flame Landing.html" style={{
+            <a href="index.html" style={{
               border: `1px solid ${T.fg}`, color: T.fg, padding: "18px 28px",
               fontFamily: "var(--display)", fontSize: 22, letterSpacing: "0.1em",
               textDecoration: "none", textAlign: "center",
