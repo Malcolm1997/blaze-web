@@ -1,0 +1,134 @@
+[
+  {
+    "id": "01",
+    "name": "Ember 9K",
+    "puffs": 9000,
+    "flavor": "Ice Mint",
+    "color": "#00C2B5",
+    "price": 18000,
+    "badge": "",
+    "category": "ice",
+    "stock": "high"
+  },
+  {
+    "id": "02",
+    "name": "Ash 12K",
+    "puffs": 12000,
+    "flavor": "Berry Crush",
+    "color": "#C44FD0",
+    "price": 22000,
+    "badge": "HOT",
+    "category": "fruit",
+    "stock": "high"
+  },
+  {
+    "id": "03",
+    "name": "Smoke 15K",
+    "puffs": 15000,
+    "flavor": "Mango Lychee",
+    "color": "#F5813F",
+    "price": 26000,
+    "badge": "",
+    "category": "fruit",
+    "stock": "high"
+  },
+  {
+    "id": "04",
+    "name": "Blaze 20K",
+    "puffs": 20000,
+    "flavor": "Cola Cherry",
+    "color": "#D93B3B",
+    "price": 32000,
+    "badge": "NEW",
+    "category": "drink",
+    "stock": "mid"
+  },
+  {
+    "id": "05",
+    "name": "Cinder 8K",
+    "puffs": 8000,
+    "flavor": "Peach Ice",
+    "color": "#F0956A",
+    "price": 16000,
+    "badge": "",
+    "category": "ice",
+    "stock": "high"
+  },
+  {
+    "id": "06",
+    "name": "Flicker 10K",
+    "puffs": 10000,
+    "flavor": "Grape Mist",
+    "color": "#8B5CF6",
+    "price": 19000,
+    "badge": "",
+    "category": "fruit",
+    "stock": "high"
+  },
+  {
+    "id": "07",
+    "name": "Spark 14K",
+    "puffs": 14000,
+    "flavor": "Tropical Punch",
+    "color": "#F59E0B",
+    "price": 24000,
+    "badge": "",
+    "category": "fruit",
+    "stock": "mid"
+  },
+  {
+    "id": "08",
+    "name": "Pyre 18K",
+    "puffs": 18000,
+    "flavor": "Strawberry Kiwi",
+    "color": "#EF4444",
+    "price": 29000,
+    "badge": "LOW",
+    "category": "fruit",
+    "stock": "low"
+  },
+  {
+    "id": "09",
+    "name": "Glow 11K",
+    "puffs": 11000,
+    "flavor": "Vanilla Tobacco",
+    "color": "#B45309",
+    "price": 20000,
+    "badge": "",
+    "category": "classic",
+    "stock": "high"
+  },
+  {
+    "id": "10",
+    "name": "Char 16K",
+    "puffs": 16000,
+    "flavor": "Watermelon Ice",
+    "color": "#F43F5E",
+    "price": 27000,
+    "badge": "HOT",
+    "category": "ice",
+    "stock": "high"
+  },
+  {
+    "id": "11",
+    "name": "Soot 7K",
+    "puffs": 7000,
+    "flavor": "Cheesecake",
+    "color": "#D4A373",
+    "price": 14500,
+    "badge": "",
+    "category": "dessert",
+    "stock": "high"
+  },
+  {
+    "id": "12",
+    "name": "Magma 25K",
+    "puffs": 25000,
+    "flavor": "Energy Bull",
+    "color": "#3B82F6",
+    "price": 38000,
+    "badge": "NEW",
+    "category": "drink",
+    "stock": "low"
+  }
+]

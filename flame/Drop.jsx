@@ -60,7 +60,7 @@ const navBtn = (T, primary) => ({
 
 const ProductCard = ({ product, accent, accent2, featured }) => {
   const T = FlameTokens;
-  const color = `oklch(0.65 0.18 ${product.hue})`;
+  const color = product.color;
 
   return (
     <div style={{

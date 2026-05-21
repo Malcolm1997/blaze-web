@@ -136,22 +136,8 @@ const VapeIllustration = ({ color, size = "100%", flavor }) => {
   );
 };
 
-// Product catalog — generic names, no brand recreation.
-// Catálogo genérico de descartables. category: ice / fruit / dessert / drink / classic
-const FlameProducts = [
-  { id: "01", name: "Ember 9K",    puffs: 9000,  flavor: "Ice Mint",        hue: 5,   price: 18000, badge: "",    category: "ice",     stock: "high" },
-  { id: "02", name: "Ash 12K",     puffs: 12000, flavor: "Berry Crush",     hue: 350, price: 22000, badge: "HOT", category: "fruit",   stock: "high" },
-  { id: "03", name: "Smoke 15K",   puffs: 15000, flavor: "Mango Lychee",    hue: 5,   price: 26000, badge: "",    category: "fruit",   stock: "high" },
-  { id: "04", name: "Blaze 20K",   puffs: 20000, flavor: "Cola Cherry",     hue: 0,   price: 32000, badge: "NEW", category: "drink",   stock: "mid"  },
-  { id: "05", name: "Cinder 8K",   puffs: 8000,  flavor: "Peach Ice",       hue: 350, price: 16000, badge: "",    category: "ice",     stock: "high" },
-  { id: "06", name: "Flicker 10K", puffs: 10000, flavor: "Grape Mist",      hue: 0,   price: 19000, badge: "",    category: "fruit",   stock: "high" },
-  { id: "07", name: "Spark 14K",   puffs: 14000, flavor: "Tropical Punch",  hue: 5,   price: 24000, badge: "",    category: "fruit",   stock: "mid"  },
-  { id: "08", name: "Pyre 18K",    puffs: 18000, flavor: "Strawberry Kiwi", hue: 350, price: 29000, badge: "LOW", category: "fruit",   stock: "low"  },
-  { id: "09", name: "Glow 11K",    puffs: 11000, flavor: "Vanilla Tobacco", hue: 0,   price: 20000, badge: "",    category: "classic", stock: "high" },
-  { id: "10", name: "Char 16K",    puffs: 16000, flavor: "Watermelon Ice",  hue: 5,   price: 27000, badge: "HOT", category: "ice",     stock: "high" },
-  { id: "11", name: "Soot 7K",     puffs: 7000,  flavor: "Cheesecake",      hue: 350, price: 14500, badge: "",    category: "dessert", stock: "high" },
-  { id: "12", name: "Magma 25K",   puffs: 25000, flavor: "Energy Bull",     hue: 0,   price: 38000, badge: "NEW", category: "drink",   stock: "low"  },
-];
+// FlameProducts is populated at runtime by the products.json loader (inline script in each HTML page).
+window.FlameProducts = window.FlameProducts || [];
 
 const CategoryLabels = {
   ice: "Hielo / Mint",
@@ -165,6 +151,6 @@ const fmtPrice = (n) =>
   "$ " + Math.round(n / 1000) + "." + String(n % 1000).padStart(3, "0");
 
 Object.assign(window, {
-  FlameTokens, FlameProducts, CategoryLabels,
+  FlameTokens, CategoryLabels,
   Pill, SectionLabel, FlameMark, VapeIllustration, fmtPrice,
 });

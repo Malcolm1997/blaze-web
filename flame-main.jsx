@@ -100,4 +100,6 @@ function FlameApp() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<FlameApp />);
+(window.__productsReady || Promise.resolve()).then(() => {
+  ReactDOM.createRoot(document.getElementById("root")).render(<FlameApp />);
+});

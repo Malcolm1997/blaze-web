@@ -53,7 +53,7 @@ function useCart() {
         flavor: product.flavor,
         puffs: product.puffs,
         price: product.price,
-        hue: product.hue,
+        color: product.color,
         qty,
       });
     }
@@ -320,7 +320,7 @@ function CartDrawer({ accent, accent2, open, onClose }) {
 
 function CartLine({ item, accent, onInc, onDec, onRemove }) {
   const T = FlameTokens;
-  const color = `oklch(0.65 0.18 ${item.hue || 30})`;
+  const color = item.color || `oklch(0.65 0.18 ${item.hue || 30})`;
 
   return (
     <div style={{

@@ -120,7 +120,7 @@ const FlameHero = ({ accent, accent2 }) => {
 const FeaturedDrop = ({ accent, accent2 }) => {
   const T = FlameTokens;
   const featured = FlameProducts[0];
-  const color = `oklch(0.65 0.18 ${featured.hue})`;
+  const color = featured.color;
   const { add } = useCart();
 
   const handleAdd = () => {

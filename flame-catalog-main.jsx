@@ -85,4 +85,6 @@ function CatalogApp() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<CatalogApp />);
+(window.__productsReady || Promise.resolve()).then(() => {
+  ReactDOM.createRoot(document.getElementById("root")).render(<CatalogApp />);
+});
