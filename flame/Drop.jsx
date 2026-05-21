@@ -91,14 +91,18 @@ const ProductCard = ({ product, accent, accent2, featured }) => {
         )}
       </div>
 
-      {/* Vape illustration */}
+      {/* Product visual */}
       <div style={{
         height: 260,
         background: `radial-gradient(50% 80% at 50% 60%, ${color}15 0%, transparent 70%)`,
         display: "flex", alignItems: "center", justifyContent: "center",
-        marginBottom: 14,
+        marginBottom: 14, overflow: "hidden",
       }}>
-        <VapeIllustration color={color} size={140} flavor={product.flavor.split(" ")[0]} />
+        {product.image
+          ? <img src={product.image} alt={`${product.name} ${product.flavor}`}
+              style={{ height: "100%", width: "100%", objectFit: "contain" }} />
+          : <VapeIllustration color={color} size={140} flavor={product.flavor.split(" ")[0]} />
+        }
       </div>
 
       {/* Name + flavor */}

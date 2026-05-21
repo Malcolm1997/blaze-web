@@ -207,14 +207,19 @@ const FeaturedDrop = ({ accent, accent2 }) => {
           )}
         </div>
 
-        {/* Vape illustration */}
+        {/* Product visual */}
         <div style={{
           position: "relative",
           height: 200, marginTop: 18,
           background: `radial-gradient(50% 80% at 50% 60%, ${color}25 0%, transparent 70%)`,
           display: "flex", alignItems: "center", justifyContent: "center",
+          overflow: "hidden",
         }}>
-          <VapeIllustration color={color} size={140} flavor={featured.flavor.split(" ")[0]} />
+          {featured.image
+            ? <img src={featured.image} alt={`${featured.name} ${featured.flavor}`}
+                style={{ height: "100%", width: "100%", objectFit: "contain" }} />
+            : <VapeIllustration color={color} size={140} flavor={featured.flavor.split(" ")[0]} />
+          }
         </div>
 
         {/* Specs */}
